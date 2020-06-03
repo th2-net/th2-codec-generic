@@ -3,7 +3,7 @@ plugins {
 }
 
 subprojects {
-    apply plugin: 'application'
+    apply plugin: 'java'
     apply plugin: 'com.palantir.docker'
 
     ext {
