@@ -13,8 +13,9 @@ subprojects {
         sailfishVersion  = "${sailfish_version_major}.${sailfish_version_minor}"
         artifactVersion  = "${sailfishVersion}-SNAPSHOT"
 
-        codecdockerImageVersion = "1.0.2.5" // FIXME
+        codecdockerImageVersion = "1.0-latest" // FIXME
         dockerImageVersion = "${version_major}.${version_minor}.${version_maintenance}.${version_build}"
+        dockerImageLastVersion = "${version_major}.${version_minor}-latest"
         dockerCodecImplementationDir = 'codec_implementation'
     }
 
@@ -49,6 +50,8 @@ subprojects {
     docker {
         name "${target_docker_repository}/${docker_image_name}:${dockerImageVersion}"
         tag 'local-version', "${docker_image_name}:${dockerImageVersion}"
+        tag 'local-latest', "${docker_image_name}:${dockerImageLastVersion}"
+        tag 'remote-latest',  "${target_docker_repository}/${docker_image_name}:${dockerImageLastVersion}"
 
         buildArgs([SOURCE_DOCKER_VERSION: codecdockerImageVersion])
 
