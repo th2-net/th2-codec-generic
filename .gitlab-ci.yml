@@ -1,0 +1,36 @@
+stages:
+  - build
+
+image: "docker:19.03.12"
+
+# Disabled additional detached pipeline at a merge request.
+# Mode of merge requests in the repository must be set to 'Merge commit'.
+# Original source: https://gitlab.com/gitlab-org/gitlab/-/issues/34756
+workflow:
+  rules:
+    - if: '$CI_MERGE_REQUEST_ID == null'
+
+variables:
+  COMMAND: main
+
+build_one:
+  stage: build
+  tags:
+    - dind
+  variables:
+    TEST: 'test'
+  before_script:
+    - 'tmp="my $TEST"'
+    - 'export ABC=$tmp'
+  script: |
+    echo "Command $COMMAND $ABC"
+
+build_two:
+  extends: build_one
+  before_script:
+    - 'tmp="not my $TEST"'
+    - 'export ABC=$tmp'
+  parallel:
+    matrix:
+      - description: test
+        COMMAND: [one, two, sd]
