@@ -1,12 +1,9 @@
 ARG source_docker_repository
-ARG release_version
 ARG project_name
 
 FROM gradle:6.6-jdk11 AS build
-ARG release_version
 COPY ./ .
-RUN gradle --no-daemon clean dockerPrepare \
-    -Prelease_version=${release_version}
+RUN gradle --no-daemon clean dockerPrepare
 
 FROM ${source_docker_repository}/th2-codec:1.2.0
 ARG project_name

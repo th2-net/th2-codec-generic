@@ -22,7 +22,6 @@ build:
   variables:
     DOCKER_INTERMEDIATE_TAG: "${CI_COMMIT_SHA}"
     DOCKER_BUILD_TARGET: "--target build"
-    DOCKER_BUILD_ARGS: "--build-arg release_version=${APP_VERSION}"
   dependencies:
     - makeMetaEnv
 
@@ -32,11 +31,11 @@ build-dockers:
   variables:
     DOCKER_INTERMEDIATE_TAG: "${CI_COMMIT_SHA}-${PROJECT_NAME}"
     DOCKER_BUILD_ARGS: >-
-      --build-arg release_version=${APP_VERSION}
       --build-arg project_name=${PROJECT_NAME}
       --build-arg source_docker_repository=${REGISTRY}
   dependencies:
     - build
+    - makeMetaEnv
   parallel:
     matrix:
       - PROVIDER: codecs
