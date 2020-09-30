@@ -41,14 +41,16 @@ build-dockers:
     matrix:
       - PROVIDER: codecs
         PROJECT_NAME:
-          - fast-codec
-          - fast-codec
-          - itch-codec
-          - ntg-codec
+          - codec-fast
+          - codec-fix
+          - codec-itch
+          - codec-ntg
+          - codec-tcpip
 
 docker_publish:
   extends: .docker-publish-template
   variables:
+    IMAGE_NAME: "th2-${PROJECT_NAME}"
     DOCKER_SOURCE_TAG: "${CI_COMMIT_SHA}-${PROJECT_NAME}"
   dependencies:
     - makeMetaEnv
@@ -56,7 +58,8 @@ docker_publish:
     matrix:
       - PROVIDER: codecs
         PROJECT_NAME:
-          - fast-codec
-          - fast-codec
-          - itch-codec
-          - ntg-codec
+          - codec-fast
+          - codec-fix
+          - codec-itch
+          - codec-ntg
+          - codec-tcpip
