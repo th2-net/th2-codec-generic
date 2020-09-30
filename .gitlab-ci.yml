@@ -33,6 +33,13 @@ build-dockers:
     DOCKER_BUILD_ARGS: >-
       --build-arg project_name=${PROJECT_NAME}
       --build-arg source_docker_repository=${REGISTRY}
+  before_script: |
+    APP_NAME="th2-${PROJECT_NAME}"
+    if [ $SOLUTION == "true" ]; then
+      IMAGE_NAME=${SOLUTION_REGISTRY}/${APP_NAME}
+    else
+      IMAGE_NAME=${REGISTRY}/${APP_NAME}
+    fi
   dependencies:
     - build
     - makeMetaEnv
@@ -49,8 +56,14 @@ build-dockers:
 docker_publish:
   extends: .docker-publish-template
   variables:
-    IMAGE_NAME: "th2-${PROJECT_NAME}"
     DOCKER_SOURCE_TAG: "${CI_COMMIT_SHA}-${PROJECT_NAME}"
+  before_script: |
+    APP_NAME="th2-${PROJECT_NAME}"
+    if [ $SOLUTION == "true" ]; then
+      IMAGE_NAME=${SOLUTION_REGISTRY}/${APP_NAME}
+    else
+      IMAGE_NAME=${REGISTRY}/${APP_NAME}
+    fi
   dependencies:
     - makeMetaEnv
   parallel:
