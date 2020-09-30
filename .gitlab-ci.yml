@@ -1,36 +1,62 @@
+include:
+  - project: 'vivarium/th2/pipelines'
+    ref: test
+    file: '/.gitlab-ci-common.yml'
+
 stages:
+  - meta
   - build
-
-image: "docker:19.03.12"
-
-# Disabled additional detached pipeline at a merge request.
-# Mode of merge requests in the repository must be set to 'Merge commit'.
-# Original source: https://gitlab.com/gitlab-org/gitlab/-/issues/34756
-workflow:
-  rules:
-    - if: '$CI_MERGE_REQUEST_ID == null'
+  - build-docker
+  - test
+  - publish
+  - notify
 
 variables:
-  COMMAND: main
+  APP_NAME: "th2-codec-generic"
+  MAJOR_VERSION: "1"
+  MINOR_VERSION: "2"
+  MAINTENANCE_VERSION: '0'
 
-build_one:
-  stage: build
-  tags:
-    - dind
+build:
+  extends: .build-template
   variables:
-    TEST: 'test'
-  before_script:
-    - 'tmp="my $TEST"'
-    - 'export ABC=$tmp'
-  script: |
-    echo "Command $COMMAND $ABC"
+    DOCKER_INTERMEDIATE_TAG: "${CI_COMMIT_SHA}"
+    DOCKER_BUILD_TARGET: "--target build"
+    DOCKER_BUILD_ARGS: "--build-arg release_version=${APP_VERSION}"
+  dependencies:
+    - makeMetaEnv
 
-build_two:
-  extends: build_one
-  before_script:
-    - 'tmp="not my $TEST"'
-    - 'export ABC=$tmp'
+build-dockers:
+  extends: .build-template
+  stage: build-docker
+  variables:
+    DOCKER_INTERMEDIATE_TAG: "${CI_COMMIT_SHA}-${PROJECT_NAME}"
+    DOCKER_BUILD_ARGS: >-
+      --build-arg release_version=${APP_VERSION}
+      --build-arg project_name=${PROJECT_NAME}
+      --build-arg source_docker_repository=${REGISTRY}
+  dependencies:
+    - build
   parallel:
     matrix:
-      - description: test
-        COMMAND: [one, two, sd]
+      - PROVIDER: codecs
+        PROJECT_NAME:
+          - fast-codec
+          - fast-codec
+          - itch-codec
+          - ntg-codec
+
+docker_publish:
+  extends: .docker-publish-template
+  variables:
+    DOCKER_SOURCE_TAG: "${CI_COMMIT_SHA}-${PROJECT_NAME}"
+  dependencies:
+    - makeMetaEnv
+  parallel:
+    matrix:
+      - PROVIDER: codecs
+        PROJECT_NAME:
+          - fast-codec
+          - fast-codec
+          - itch-codec
+          - ntg-codec
