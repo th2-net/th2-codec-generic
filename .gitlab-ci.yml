@@ -17,6 +17,16 @@ variables:
   MINOR_VERSION: "2"
   MAINTENANCE_VERSION: '0'
 
+.resolve-multi-image-name: &resolve-multi-image-name
+  - |
+    APP_NAME="th2-${PROJECT_NAME}"
+    if [ $SOLUTION == "true" ]; then
+      IMAGE_NAME=${SOLUTION_REGISTRY}/${APP_NAME}
+    else
+      IMAGE_NAME=${REGISTRY}/${APP_NAME}
+    fi
+
+
 build:
   extends: .build-template
   variables:
@@ -33,13 +43,8 @@ build-dockers:
     DOCKER_BUILD_ARGS: >-
       --build-arg project_name=${PROJECT_NAME}
       --build-arg source_docker_repository=${REGISTRY}
-  before_script: |
-    APP_NAME="th2-${PROJECT_NAME}"
-    if [ $SOLUTION == "true" ]; then
-      IMAGE_NAME=${SOLUTION_REGISTRY}/${APP_NAME}
-    else
-      IMAGE_NAME=${REGISTRY}/${APP_NAME}
-    fi
+  before_script:
+    - *resolve-multi-image-name
   dependencies:
     - build
     - makeMetaEnv
@@ -57,13 +62,8 @@ docker_publish:
   extends: .docker-publish-template
   variables:
     DOCKER_SOURCE_TAG: "${CI_COMMIT_SHA}-${PROJECT_NAME}"
-  before_script: |
-    APP_NAME="th2-${PROJECT_NAME}"
-    if [ $SOLUTION == "true" ]; then
-      IMAGE_NAME=${SOLUTION_REGISTRY}/${APP_NAME}
-    else
-      IMAGE_NAME=${REGISTRY}/${APP_NAME}
-    fi
+  before_script:
+    - *resolve-multi-image-name
   dependencies:
     - makeMetaEnv
   parallel:
