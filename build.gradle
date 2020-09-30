@@ -9,13 +9,7 @@ subprojects {
     ext {
         resourceDir = "src/main/resources"
         sharedDir = file("${project.rootDir}/shared")
-        codecDataPath = "${buildDir}/codecData"
-        sailfishVersion  = "${sailfish_version_major}.${sailfish_version_minor}"
-        artifactVersion  = "${sailfishVersion}-SNAPSHOT"
 
-        codecdockerImageVersion = "${version_major}.${version_minor}-latest" // FIXME
-        dockerImageVersion = "${version_major}.${version_minor}.${version_maintenance}.${version_build}"
-        dockerImageLastVersion = "${version_major}.${version_minor}-latest"
         dockerCodecImplementationDir = 'codec_implementation'
     }
 
@@ -41,20 +35,13 @@ subprojects {
     }
 
     dependencies {
-        codec ("com.exactpro.sf:${sf_service_name}:${artifactVersion}") {
+        codec ("com.exactpro.sf:${sf_service_name}:3.2-SNAPSHOT") {
             exclude module: 'sailfish-core'
             exclude module: 'sailfish-common'
         }
     }
 
     docker {
-        name "${target_docker_repository}/${docker_image_name}:${dockerImageVersion}"
-        tag 'local-version', "${docker_image_name}:${dockerImageVersion}"
-        tag 'local-latest', "${docker_image_name}:${dockerImageLastVersion}"
-        tag 'remote-latest',  "${target_docker_repository}/${docker_image_name}:${dockerImageLastVersion}"
-
-        buildArgs([SOURCE_DOCKER_VERSION: codecdockerImageVersion])
-
         copySpec.with {
             from(configurations.codec) {
                 into dockerCodecImplementationDir
