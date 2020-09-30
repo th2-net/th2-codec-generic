@@ -1,6 +1,6 @@
 include:
   - project: 'vivarium/th2/pipelines'
-    ref: test
+    ref: master
     file: '/.gitlab-ci-common.yml'
 
 stages:
