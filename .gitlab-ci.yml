@@ -1,21 +1,13 @@
 include:
   - project: 'vivarium/th2/pipelines'
     ref: master
-    file: '/.gitlab-ci-common.yml'
-
-stages:
-  - meta
-  - build
-  - build-docker
-  - test
-  - publish
-  - notify
+    file: '/.gitlab-ci-multi-docker.yml'
 
 variables:
   APP_NAME: "th2-codec-generic"
   MAJOR_VERSION: "1"
   MINOR_VERSION: "2"
-  MAINTENANCE_VERSION: '0'
+  MAINTENANCE_VERSION: '1'
 
 .resolve-multi-image-name: &resolve-multi-image-name
   - |
@@ -26,28 +18,13 @@ variables:
       IMAGE_NAME=${REGISTRY}/${APP_NAME}
     fi
 
-
-build:
-  extends: .build-template
-  variables:
-    DOCKER_INTERMEDIATE_TAG: "${CI_COMMIT_SHA}"
-    DOCKER_BUILD_TARGET: "--target build"
-  dependencies:
-    - makeMetaEnv
+build-dockers-context:
+  extends: .build-dockers-context-template
 
 build-dockers:
-  extends: .build-template
-  stage: build-docker
-  variables:
-    DOCKER_INTERMEDIATE_TAG: "${CI_COMMIT_SHA}-${PROJECT_NAME}"
-    DOCKER_BUILD_ARGS: >-
-      --build-arg project_name=${PROJECT_NAME}
-      --build-arg source_docker_repository=${REGISTRY}
+  extends: .build-dockers-template
   before_script:
     - *resolve-multi-image-name
-  dependencies:
-    - build
-    - makeMetaEnv
   parallel:
     matrix:
       - PROVIDER: codecs
@@ -58,14 +35,10 @@ build-dockers:
           - codec-ntg
           - codec-tcpip
 
-docker_publish:
-  extends: .docker-publish-template
-  variables:
-    DOCKER_SOURCE_TAG: "${CI_COMMIT_SHA}-${PROJECT_NAME}"
+dockers-publish:
+  extends: .dockers-publish-template
   before_script:
     - *resolve-multi-image-name
-  dependencies:
-    - makeMetaEnv
   parallel:
     matrix:
       - PROVIDER: codecs
