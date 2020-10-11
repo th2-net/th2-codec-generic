@@ -7,7 +7,7 @@ variables:
   APP_NAME: "th2-codec-generic"
   MAJOR_VERSION: "1"
   MINOR_VERSION: "2"
-  MAINTENANCE_VERSION: '1'
+  MAINTENANCE_VERSION: '2'
 
 .resolve-multi-image-name: &resolve-multi-image-name
   - |
@@ -17,6 +17,8 @@ variables:
     else
       IMAGE_NAME=${REGISTRY}/${APP_NAME}
     fi
+
+    IMAGE_VERSION_LABEL=com.exactpro.th2.${APP_NAME}.version
 
 build-dockers-context:
   extends: .build-dockers-context-template
