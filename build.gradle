@@ -20,8 +20,8 @@ subprojects {
         }
         mavenCentral()
         maven {
-            name 'Artifactory'
-            url 'http://artifactory5.exp.exactpro.com/artifactory/libs-snapshot'
+            name 'Bintray'
+            url 'https://dl.bintray.com/exactpro/sailfish'
         }
 
         configurations.all {
@@ -35,7 +35,7 @@ subprojects {
     }
 
     dependencies {
-        codec ("com.exactpro.sf:${sf_service_name}:3.2-SNAPSHOT") {
+        codec ("com.exactpro.sf:${sf_service_name}:3.2") {
             exclude module: 'sailfish-core'
             exclude module: 'sailfish-common'
         }

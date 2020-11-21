@@ -1,13 +1,10 @@
 include:
-  - project: 'vivarium/th2/pipelines'
+  - project: "vivarium/th2/pipelines"
     ref: master
-    file: '/.gitlab-ci-multi-docker.yml'
+    file: "/.gitlab-ci-multi-docker.yml"
 
 variables:
   APP_NAME: "th2-codec-generic"
-  MAJOR_VERSION: "2"
-  MINOR_VERSION: "0"
-  MAINTENANCE_VERSION: '0'
 
 .resolve-multi-image-name: &resolve-multi-image-name
   - |
