@@ -14,7 +14,11 @@ jobs:
     strategy:
       matrix:
         proto:
-          - conn-fix
+          - codec-fast
+          - codec-fix
+          - codec-itch
+          - codec-ntg
+          - codec-tcpip
     steps:
       - uses: actions/checkout@v2
       - name: Set up Docker Buildx
