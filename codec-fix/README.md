@@ -1,16 +1,16 @@
 # FIX codec
 
-This codec can be used for decoding and encoding message in FIX protocol
+This codec can be used for decoding and encoding messages in FIX protocol
 
 ## Configuration
 
 ### Codec factory
 
-To use the following codec you need to specify the following codec factory:
+To use the FIX codec you will need to specify the following codec factory:
 **com.exactpro.sf.externalapi.codec.impl.ExternalFixCodecFactory**
 
 ### Implementation parameters
-Configuration example. All parameters have their reasonable default values.
+Configuration example. All parameters have their logical default values.
 ```yaml
 decodeByDictionary: true
 depersonalizationIncomingMessages: false
