@@ -6,7 +6,7 @@ This repository contains the build scripts for general codecs:
 + [fast](codec-fast/README.md)
 + [ntg (native)](codec-ntg/README.md)
 
-You can find the available parameters for each codec in README files, inside codecs' folders.
+You can find the available parameters for each codec in each README file, inside codecs' folders
 
 If you need to modify some parameters, please, change only the parameters that you will need.
 

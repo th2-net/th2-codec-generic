@@ -1,6 +1,6 @@
 # NTG codec
 
-This codec can be used for decoding and encoding messages in NTG (Native) protocol.
+This codec can be used for decoding and encoding messages via NTG (Native) protocol.
 
 ## Configuration
 
@@ -10,4 +10,4 @@ To use the NTG codec you will need to specify the following codec factory:
 **com.exactpro.sf.externalapi.codec.impl.ExternalNtgCodecFactory**
 
 ### Implementation parameters
-This codec doesn't have any specific configuration. All decoding/encoding relies on the specified dictionary.
+This codec doesn't have any specific configuration. All the decoding/encoding relies on the specified dictionary.

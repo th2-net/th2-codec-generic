@@ -1,6 +1,6 @@
 # ITCH codec
 
-This codec can be used for decoding and encoding messages in ITCH protocol
+This codec can be used for decoding and encoding messages via ITCH protocol
 
 ## Configuration
 

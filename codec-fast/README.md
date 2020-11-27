@@ -1,6 +1,6 @@
 # FAST codec
 
-This codec can be used for decoding and encoding messages in FAST protocol
+This codec can be used for decoding and encoding messages via FAST protocol
 
 ## Configuration
 
@@ -17,4 +17,4 @@ skipInitialByteAmount: 0
 ```
 
 #### skipInitialByteAmount
-The number of bytes that should be skipped before decoding messages from RawMessageBatch. _Default value is 0._
+The number of bytes that should be skipped before decoding messages from RawMessageBatch. _The default value is 0._
