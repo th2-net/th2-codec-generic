@@ -32,7 +32,6 @@ build-dockers:
           - codec-fix
           - codec-itch
           - codec-ntg
-          - codec-tcpip
 
 dockers-publish:
   extends: .dockers-publish-template
@@ -46,4 +45,3 @@ dockers-publish:
           - codec-fix
           - codec-itch
           - codec-ntg
-          - codec-tcpip
