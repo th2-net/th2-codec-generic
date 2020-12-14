@@ -18,9 +18,14 @@ fieldConverterClassName: com.exactpro.sf.services.fix.FixFieldConverter
 removeTrailingZeros: false
 ```
 
+By default, FIX codec implementation expects that tags will be separated by _SOH_ (like a regular FIX message). However, if messages you want to decode/encode have a different field separator you can set the custom separator using the **fieldSeparator** parameter. Example,
+```yaml
+fieldSeparator: '|'
+```
+
 #### decodeByDictionary
 
-The dictionary will be used to decode messages. Otherwise, messages will be decoded as flatten structure - no header, trailer or any components and groups
+The dictionary will be used to decode messages. Otherwise, messages will be decoded as flatten structure - without header, trailer or any components and groups
  will be extracted.
 
 #### depersonalizationIncomingMessages
