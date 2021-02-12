@@ -13,10 +13,10 @@ To use the ITCH codec you will need to specify the following codec factory:
 Configuration example. All parameters have their logical default values.
 ```yaml
 ---
-msgLengthFieldSize: 1
+msgLength: 1
 ```
 
-#### msgLengthFieldSize
+#### msgLength
 
 It specifies the size of the field which contains the length of the following payload (message_header + [**payload_length** + payload] * _n_).
 The supported values are 1 and 2.
