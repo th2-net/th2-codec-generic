@@ -14,6 +14,7 @@ Configuration example. All parameters have their logical default values.
 ```yaml
 ---
 msgLength: 1
+evolutionaryOutput: true
 wrapMessages: false
 ```
 
