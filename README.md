@@ -1,4 +1,4 @@
-# General codecs
+# General codecs (2.4.0)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -11,3 +11,8 @@ You can find the available parameters for each codec in each README file, inside
 If you need to modify some parameters, please, change only the parameters that you will need.
 
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
+
+## Release notes
+
++ 2.4.0
+  + Validates configured dictionaries during initialization
