@@ -1,4 +1,4 @@
-# FIX codec
+# FIX codec (3.2.0)
 
 This codec can be used for decoding and encoding messages via FIX protocol
 
@@ -12,6 +12,7 @@ To use the FIX codec you will need to specify the following codec factory:
 ### Implementation parameters
 Configuration example. All parameters have their logical default values.
 ```yaml
+verifyMessageStructure: true
 decodeByDictionary: true
 depersonalizationIncomingMessages: false
 fieldConverterClassName: com.exactpro.sf.services.fix.FixFieldConverter
@@ -22,6 +23,11 @@ By default, FIX codec implementation expects that tags will be separated by _SOH
 ```yaml
 fieldSeparator: '|'
 ```
+
+#### verifyMessageStructure
+
+If the option is true, then the internal codec verifies structure of incoming messages by the configured dictionary.
+ The verification feature requires the `decode by dictionary` to be enabled and the `depersonalization incoming messages` to be disabled.
 
 #### decodeByDictionary
 
@@ -40,3 +46,8 @@ The field converter class that will be used for field conversion, if the `decode
 
 It enables the removal of trailing zeroes for fields that have `java.lang.Double` and `java.math.BigDecimal` types.
 E.g. original value: `100`, value after the removal of trailing zeroes: `1E+2`
+
+## Release notes
+
++ 3.2.0
+  + Added the 'verify message structure' option, default value is set to 'true'

@@ -1,3 +1,4 @@
+verifyMessageStructure: true
 decodeByDictionary: true
 depersonalizationIncomingMessages: false
 fieldConverterClassName: com.exactpro.sf.services.fix.FixFieldConverter
