@@ -1,4 +1,4 @@
-# General codecs (2.5.1)
+# General codecs (3.3.1)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -12,13 +12,20 @@ If you need to modify some parameters, please, change only the parameters that y
 
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
-## Release notes
+# Changes
 
-+ 2.5.1
-  + Update th2-codec-sailfish to fix problem with message names
+## 3.3.1
 
-+ 2.5.0
-  + Checks message structure by the configured dictionary during encode.
++ Update th2-codec-sailfish to fix problem with message names
 
-+ 2.4.0
-  + Validates configured dictionaries during initialization
+## 3.3.0
+
++ Checks message structure by the configured dictionary during encode.
+
+## 3.2.0
+
++ Validates configured dictionaries during initialization
+
+## 3.1.1
+
++ Allow the codec to produce more than one message during the decoding a raw message

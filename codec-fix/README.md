@@ -1,4 +1,4 @@
-# FIX codec (2.4.0)
+# FIX codec (3.2.1)
 
 This codec can be used for decoding and encoding messages via FIX protocol
 
@@ -49,5 +49,9 @@ E.g. original value: `100`, value after the removal of trailing zeroes: `1E+2`
 
 ## Release notes
 
-+ 2.4.0
-  + Added the 'verify message structure' option, default value is set to 'true'
++ 3.2.1
+  + Puts the BeginString(8) field during encode. The value to set is determined from the dictionary namespace.
+  + Verifies a message by the configured dictionary during encoding.
+
++ 3.2.0
+  + Added the 'verify message structure' option, default value is set to 'true'.
