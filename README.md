@@ -15,7 +15,7 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 ## Release notes
 
 + 2.5.0
-+ Checks message structure by the configured dictionary during encode.
+  + Checks message structure by the configured dictionary during encode.
 
 + 2.4.0
   + Validates configured dictionaries during initialization
