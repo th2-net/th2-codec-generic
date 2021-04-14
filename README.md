@@ -1,4 +1,4 @@
-# General codecs (3.2.0)
+# General codecs (3.3.0)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,10 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 # Changes
+
+## 3.3.0
+
++ Checks message structure by the configured dictionary during encode.
 
 ## 3.2.0
 
