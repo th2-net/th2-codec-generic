@@ -1,12 +1,10 @@
-name: Build and publish Docker distributions to Github Container Registry ghcr.io
+name: Dev build and publish Docker distributions to Github Container Registry ghcr.io
 
 on:
   push:
-    branches:
+    branches-ignore:
       - master
       - version-*
-    paths:
-      - gradle.properties
 
 jobs:
   build:
@@ -29,12 +27,22 @@ jobs:
           password: ${{ secrets.CR_PAT }}
       - run: echo "::set-output name=REPOSITORY_NAME::$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')"
         id: meta
-      - name: Read version from gradle.properties
-        id: read_property
+      # Prepare custom build version
+      - name: Get branch name
+        id: branch
+        run: echo ::set-output name=branch_name::${GITHUB_REF#refs/*/}
+      - name: Get release_version
+        id: ver
         uses: christian-draeger/read-properties@1.0.1
         with:
           path: ./gradle.properties
           property: release_version
+      - name: Build custom release version
+        id: release_ver
+        run: echo ::set-output name=value::"${{ steps.ver.outputs.value }}-${{ steps.branch.outputs.branch_name }}-${{ github.run_id }}"
+      - name: Show custom release version
+        run: echo ${{ steps.release_ver.outputs.value }}
+      # Build and publish image
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
@@ -42,5 +50,5 @@ jobs:
           build-args: |
             project_name=${{ matrix.proto }}
           push: true
-          tags: ghcr.io/th2-net/th2-${{ matrix.proto }}:${{ steps.read_property.outputs.value }}
-          labels: com.exactpro.th2.th2-${{ matrix.proto }}=${{ steps.read_property.outputs.value }}
+          tags: ghcr.io/th2-net/th2-${{ matrix.proto }}:${{ steps.release_ver.outputs.value }}
+          labels: com.exactpro.th2.th2-${{ matrix.proto }}=${{ steps.release_ver.outputs.value }}
