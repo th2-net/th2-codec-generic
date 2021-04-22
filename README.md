@@ -1,4 +1,4 @@
-# General codecs (3.4.0)
+# General codecs (3.4.1)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -14,7 +14,12 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 
 # Changes
 
-### 3.4.0
+## 3.4.1
+
++ removed gRPC event loop handling
++ fixed dictionary reading
+
+## 3.4.0
 
 + reads dictionaries from the /var/th2/config/dictionary folder.
 + uses mq_router, grpc_router, cradle_manager optional JSON configs from the /var/th2/config folder
