@@ -1,4 +1,4 @@
-# General codecs (3.4.1)
+# General codecs (3.4.2)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -14,6 +14,10 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 
 # Changes
 
+## 3.4.2
++ optimized converter Value.SIMPLE_VALUE to Java Class
++ removed method call MessageWrapper.cloneMessage to improve performance
+    
 ## 3.4.1
 
 + removed gRPC event loop handling
