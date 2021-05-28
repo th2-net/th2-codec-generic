@@ -1,4 +1,4 @@
-# General codecs (3.4.2)
+# General codecs (3.5.0)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -14,9 +14,12 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 
 # Changes
 
-## 3.4.2
+## 3.5.0
 + optimized converter Value.SIMPLE_VALUE to Java Class
 + removed method call MessageWrapper.cloneMessage to improve performance
++ update common library to 3.14.0
++ use release version for sailfish-core
++ copy properties from th2 proto Message to the Sailfish IMessage when converting
     
 ## 3.4.1
 
