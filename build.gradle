@@ -10,6 +10,9 @@ subprojects {
         resourceDir = "src/main/resources"
         sharedDir = file("${project.rootDir}/shared")
 
+        baseSailfishVersion           = '3.2'
+        sailfishVersion               = "${baseSailfishVersion}.1589"
+
         dockerCodecImplementationDir = 'codec_implementation'
     }
 
@@ -39,7 +42,7 @@ subprojects {
     }
 
     dependencies {
-        codec ("com.exactpro.sf:${sf_service_name}:3.2-SNAPSHOT") {
+        codec ("com.exactpro.sf:${sf_service_name}:${sailfishVersion}") {
             exclude module: 'sailfish-core'
             exclude module: 'sailfish-common'
         }
