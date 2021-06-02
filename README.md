@@ -1,4 +1,4 @@
-# General codecs (2.5.1)
+# General codecs (2.6.0)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,10 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 ## Release notes
+
++ 2.6.0
+  + Added codec-soup
+  + Reading dictionary from new directory (`var/th2/config/directory`)
 
 + 2.5.1
   + Update th2-codec-sailfish to fix problem with message names
