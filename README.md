@@ -16,6 +16,7 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 
 ## 3.6.0
 + Added codec-soup
++ Reading dictionary from new directory (`var/th2/config/directory`)
 
 ## 3.5.0
 + optimized converter Value.SIMPLE_VALUE to Java Class
