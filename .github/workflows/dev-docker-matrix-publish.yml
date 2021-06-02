@@ -16,6 +16,7 @@ jobs:
           - codec-fix
           - codec-itch
           - codec-ntg
+          - codec-soup
     steps:
       - uses: actions/checkout@v2
       - name: Set up Docker Buildx
