@@ -2,7 +2,7 @@ FROM gradle:6.6-jdk11 AS build
 COPY ./ .
 RUN gradle --no-daemon clean dockerPrepare
 
-FROM ghcr.io/th2-net/th2-codec-sailfish:3.7.1-TH2-1766-v3-860474351
+FROM ghcr.io/th2-net/th2-codec-sailfish:3.7.1-TH2-1766-v3-899454654
 ARG project_name
 WORKDIR /home
 RUN echo "/home/gradle/${project_name}/build/docker"
