@@ -1,4 +1,4 @@
-# General codecs (2.6.0)
+# General codecs (2.6.1)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,9 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 ## Release notes
+
++ 2.6.1
+  + Resets embedded log4j configuration before configuring from a file
 
 + 2.6.0
   + Added codec-soup
