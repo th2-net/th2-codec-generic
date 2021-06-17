@@ -1,4 +1,4 @@
-# General codecs (2.6.1)
+# General codecs (2.7.0)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,9 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 ## Release notes
+
++ 2.7.0
+  + Add a new COMBINED `decodeProcessorType` mode. Please, read more in the codec-core [documentation](https://github.com/th2-net/th2-codec-sailfish/tree/version-2#configuration)
 
 + 2.6.1
   + Resets embedded log4j configuration before configuring from a file
