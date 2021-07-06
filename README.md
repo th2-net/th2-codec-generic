@@ -1,4 +1,4 @@
-# General codecs (3.7.0)
+# General codecs (3.8.0)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,9 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 # Changes
+
+## 3.8.0
++ Disable waiting for connection recovery when closing the `SubscribeMonitor`
 
 ## 3.7.0
 + Set message protocol of encoded/decoded messages according to used codec
