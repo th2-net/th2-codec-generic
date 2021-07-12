@@ -1,4 +1,4 @@
-# FIX codec (3.2.1)
+# FIX codec (3.2.2)
 
 This codec can be used for decoding and encoding messages via FIX protocol
 
