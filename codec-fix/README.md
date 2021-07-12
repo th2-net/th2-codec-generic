@@ -46,8 +46,23 @@ The field converter class that will be used for field conversion, if the `decode
 
 It enables the removal of trailing zeroes for fields that have `java.lang.Double` and `java.math.BigDecimal` types.
 E.g. original value: `100`, value after the removal of trailing zeroes: `1E+2`
+	
+#### includeMilliseconds
+
+Determines if milliseconds should be added to date-time / time fields during encoding.
+	
+#### includeMicroseconds
+
+Determines if microseconds should be added to date-time / time fields during encoding.
+
+#### includeNanoseconds
+
+Determines if nanoseconds should be added to date-time / time fields during encoding
 
 ## Release notes
+
++ 3.2.2
+  + Added settings for encoding fractions of seconds.
 
 + 3.2.1
   + Puts the BeginString(8) field during encode. The value to set is determined from the dictionary namespace.
