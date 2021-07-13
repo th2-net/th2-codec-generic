@@ -1,4 +1,4 @@
-# FIX codec (3.2.2)
+# FIX codec (3.8.1)
 
 This codec can be used for decoding and encoding messages via FIX protocol
 
@@ -61,7 +61,7 @@ Determines if nanoseconds should be added to date-time / time fields during enco
 
 ## Release notes
 
-+ 3.2.2
++ 3.8.1
   + Added settings for encoding fractions of seconds.
 
 + 3.2.1
