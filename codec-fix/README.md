@@ -62,7 +62,7 @@ Determines if nanoseconds should be added to date-time / time fields during enco
 ## Release notes
 
 + 3.10.0
-  + Fixed problem with truncation of fractions of seconds in time fields
+  + Fixed the truncated time field problem related to incorrect work of the `includeMilliseconds` option
 
 + 3.8.1
   + Added settings for encoding fractions of seconds.
