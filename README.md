@@ -1,4 +1,4 @@
-# General codecs (3.9.0)
+# General codecs (3.10.0)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,10 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 # Changes
+
+## 3.10.0
++ Update base image version to 3.12.0
++ Update Sailfish services versions from `3.2.1622` to `3.2.1674`
 
 ## 3.9.0
 + Update base image version to 3.11.0 (fix behavior for decoding `BigDecimal` fields)
