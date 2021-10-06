@@ -1,4 +1,4 @@
-# General codecs (3.10.1)
+# General codecs (3.10.2)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,11 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 # Changes
+
+### 3.10.2
+
++ Update base image from 3.12.0 to 3.12.1
+  + Add event publication in case the decoding did not produce any result for a message (the `th2-error-message` is published in this case)
 
 ### 3.10.1
 
