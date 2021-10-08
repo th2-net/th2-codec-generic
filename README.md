@@ -16,7 +16,7 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 
 ### 3.10.2
 
-+ Update base image from 3.12.0 to 3.12.1
++ Update base image from 3.12.0 to 3.12.2
   + Add event publication in case the decoding did not produce any result for a message (the `th2-error-message` is published in this case)
 
 ### 3.10.1
