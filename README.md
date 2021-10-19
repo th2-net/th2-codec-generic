@@ -1,4 +1,4 @@
-# General codecs (3.10.2)
+# General codecs (3.10.3)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,10 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 # Changes
+
+### 3.10.3
+
++ Correct validation for FIX protocol (did throw an NPE in case there was no MsgType field)
 
 ### 3.10.2
 
