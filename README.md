@@ -1,4 +1,4 @@
-# General codecs (3.10.3)
+# General codecs (3.10.4)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
