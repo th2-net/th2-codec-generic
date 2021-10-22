@@ -14,6 +14,12 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 
 # Changes
 
+### 3.10.4
+
++ Update base image version to 3.12.3
+  + Correct default value for event notification parameters
+  + Add box name into root event name
+
 ### 3.10.3
 
 + Correct validation for FIX protocol (did throw an NPE in case there was no MsgType field)
