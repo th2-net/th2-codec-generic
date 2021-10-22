@@ -1,4 +1,4 @@
-# General codecs (3.10.3)
+# General codecs (3.10.4)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,12 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 # Changes
+
+### 3.10.4
+
++ Update base image version to 3.12.3
+  + Correct default value for event notification parameters
+  + Add box name into root event name
 
 ### 3.10.3
 
