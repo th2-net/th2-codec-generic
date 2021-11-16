@@ -19,6 +19,7 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 + Update base image version to 3.12.3
   + Correct default value for event notification parameters
   + Add box name into root event name
+  + Fix problem with filtering by `message_type` for MQ pins
 
 ### 3.10.3
 
