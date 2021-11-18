@@ -20,6 +20,7 @@ _Do not specify default parameters if you don't want to override them_ (just bec
   + Correct default value for event notification parameters
   + Add box name into root event name
   + Fix problem with filtering by `message_type` for MQ pins
++ Fix problem with FIX codec when it is unable to decode the message
 
 ### 3.10.3
 
