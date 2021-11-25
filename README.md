@@ -21,6 +21,8 @@ _Do not specify default parameters if you don't want to override them_ (just bec
   + Add box name into root event name
   + Fix problem with filtering by `message_type` for MQ pins
 + Fix problem with FIX codec when it is unable to decode the message
++ Migrated `sailfish-core` from `3.2.1741` to `3.2.1748`
+  + Fix decoding of EndOfSession messages in SOUP codec
 
 ### 3.10.3
 
