@@ -49,3 +49,8 @@ parseMessageLengthAsSeparateMessage: true
 ```
 
 **parseMessageLengthAsSeparateMessage** - if set to value of `true` produces length prefix before each payload part as a separate message during decoding.
+
+# Changes
+
+### 3.10.4
++ Fix decoding of EndOfSession messages in SOUP codec
