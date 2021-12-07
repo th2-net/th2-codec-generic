@@ -1,4 +1,4 @@
-# General codecs (3.10.3)
+# General codecs (4.0.0)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,10 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 # Changes
+
+### 4.0.0
+
++ `th2-codec-sailfish` version with books/pages
 
 ### 3.10.3
 
