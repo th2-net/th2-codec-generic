@@ -1,9 +1,13 @@
-# ITCH and SOUP codecs family
+# ITCH and SOUP codecs family (3.11.0)
 
 This project has codecs implementations for the following protocol:
 + ITCH
 + OUCH
 + MoldUDP64
+
+### Codec protocol
+
+Codec handles messages with the `SOUP` or empty protocol during encode/decode
 
 ## ITCH
 

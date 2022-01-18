@@ -1,6 +1,10 @@
-# ITCH codec
+# ITCH codec (3.11.0)
 
 This codec can be used for decoding and encoding messages via ITCH protocol
+
+### Codec protocol
+
+Codec handles messages with the `ITCH` or empty protocol during encode/decode
 
 ## Configuration
 
