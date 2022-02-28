@@ -1,6 +1,10 @@
-# FIX codec (3.10.4)
+# FIX codec (3.11.0)
 
 This codec can be used for decoding and encoding messages via FIX protocol
+
+### Codec protocol
+
+Codec handles messages with the `FIX` or empty protocol during encode/decode
 
 ## Configuration
 

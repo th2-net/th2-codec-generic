@@ -1,4 +1,4 @@
-# General codecs (3.10.4)
+# General codecs (3.11.0)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,12 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 # Changes
+
+### 3.11.0
+
++ Update base image version to 3.13.0
+  + Codec handles messages with its protocol or empty during encode/decode
+  + The sailfish-core library update from 3.2.1748 to 3.2.1776
 
 ### 3.10.4
 
