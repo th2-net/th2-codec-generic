@@ -1,4 +1,4 @@
-# FIX codec (3.8.1)
+# FIX codec (3.10.4)
 
 This codec can be used for decoding and encoding messages via FIX protocol
 
@@ -60,6 +60,9 @@ Determines if microseconds should be added to date-time / time fields during enc
 Determines if nanoseconds should be added to date-time / time fields during encoding
 
 ## Release notes
+
++ 3.10.4
+  + Codec cannot decode message if it contains a tag that is similar to BeginString (`8=FIX`)
 
 + 3.10.0
   + Fixed the truncated time field problem related to incorrect work of the `includeMilliseconds` option
