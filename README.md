@@ -18,7 +18,6 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 
 + Update sailfish version to 3.2.1860
   + Various fixes for specific conn types
-  + Added messages names for dictionary converter
 
 ### 3.10.4
 
