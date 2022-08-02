@@ -1,4 +1,4 @@
-# ITCH and SOUP codecs family
+# ITCH and SOUP codecs family (3.10.5)
 
 This project has codecs implementations for the following protocol:
 + ITCH
@@ -51,6 +51,10 @@ parseMessageLengthAsSeparateMessage: true
 **parseMessageLengthAsSeparateMessage** - if set to value of `true` produces length prefix before each payload part as a separate message during decoding.
 
 # Changes
+
+### 3.10.5
++ Update sailfish version to 3.2.1860
+    + Add declared message length check
 
 ### 3.10.4
 + Fix decoding of EndOfSession messages in SOUP codec
