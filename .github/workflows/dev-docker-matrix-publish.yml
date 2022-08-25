@@ -56,3 +56,11 @@ jobs:
           push: true
           tags: ghcr.io/th2-net/th2-${{ matrix.proto }}:${{ steps.release_ver.outputs.value }}
           labels: com.exactpro.th2.th2-${{ matrix.proto }}=${{ steps.release_ver.outputs.value }}
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ghcr.io/th2-net/th2-${{ matrix.proto }}:${{ steps.release_ver.outputs.value }}
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: false
+          vuln-type: 'os,library'
