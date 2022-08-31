@@ -19,6 +19,7 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 + Update base image version to 3.14.0
   + Codec handles messages with its protocol or empty during encode/decode
   + The sailfish-core library update from 3.2.1748 to 3.2.1776
++ Update sailfish version for codec to 3.2.1881
 
 ### 3.10.5
 

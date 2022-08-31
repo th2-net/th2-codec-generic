@@ -31,3 +31,10 @@ The supported values are 1 and 2.
 
 If set to value of `true` all of the decoded messages will be wrapped to the special message.
 Otherwise, the decoded messages will be returned without wrapping them.
+
+## Changes
+
+### 3.11.0
+
++ Updated version to 3.2.1881
+  + Support for 4-bytes price added for Double and BigDecimal types
