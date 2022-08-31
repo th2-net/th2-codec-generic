@@ -20,6 +20,11 @@ _Do not specify default parameters if you don't want to override them_ (just bec
   + Codec handles messages with its protocol or empty during encode/decode
   + The sailfish-core library update from 3.2.1748 to 3.2.1776
 
+### 3.10.5
+
++ Update sailfish version to 3.2.1860
+  + Various fixes for specific conn types
+
 ### 3.10.4
 
 + Update base image version to 3.12.3
