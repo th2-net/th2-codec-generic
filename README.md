@@ -14,6 +14,9 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 
 # Changes
 
+### 3.11.0 +
++ Uses event batcher which supports publication by timeout and packs events into a batch by specified count and size in bytes.
+
 ### 3.11.0
 
 + Dependencies with vulnerabilities was updated
