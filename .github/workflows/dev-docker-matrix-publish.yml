@@ -14,7 +14,7 @@ jobs:
     name: Prebuild Job
     uses: th2-net/.github/.github/workflows/compound-prebuild-java-dev-workflow.yml@main
     with:
-      runsOn: ${{ inputs.runsOn }}
+      runsOn: ubuntu-20.04
   build:
     needs: [prebuild-job]
     runs-on: ubuntu-20.04
