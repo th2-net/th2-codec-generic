@@ -47,6 +47,7 @@ jobs:
           tags: ghcr.io/th2-net/th2-${{ matrix.proto }}:${{ needs.prebuild-job.outputs.version }}
           labels: com.exactpro.th2.th2-${{ matrix.proto }}=${{ needs.prebuild-job.outputs.version }}
   scan:
+    needs: [build, prebuild-job]
     strategy:
       matrix:
         proto:
@@ -55,8 +56,6 @@ jobs:
           - codec-itch
           - codec-ntg
           - codec-soup
-    needs: [build, prebuild-job]
-    runs-on: ubuntu-20.04
     uses: th2-net/.github/.github/workflows/trivy-scan-github.yml@main
     with:
       image-path: ghcr.io/th2-net/th2-${{ matrix.proto }}:${{ needs.prebuild-job.outputs.version }}
