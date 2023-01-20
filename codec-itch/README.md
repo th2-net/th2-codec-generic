@@ -1,6 +1,10 @@
-# ITCH codec
+# ITCH codec (3.11.0)
 
 This codec can be used for decoding and encoding messages via ITCH protocol
+
+### Codec protocol
+
+Codec handles messages with the `ITCH` or empty protocol during encode/decode
 
 ## Configuration
 
@@ -27,3 +31,10 @@ The supported values are 1 and 2.
 
 If set to value of `true` all of the decoded messages will be wrapped to the special message.
 Otherwise, the decoded messages will be returned without wrapping them.
+
+## Changes
+
+### 3.11.0
+
++ Updated version to 3.2.1881
+  + Support for 4-bytes price added for Double and BigDecimal types

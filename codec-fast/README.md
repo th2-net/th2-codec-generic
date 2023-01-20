@@ -1,6 +1,10 @@
-# FAST codec
+# FAST codec (3.11.0)
 
 This codec can be used for decoding and encoding messages via FAST protocol
+
+### Codec protocol
+
+Codec handles messages with the `FAST` or empty protocol during encode/decode
 
 ## Configuration
 

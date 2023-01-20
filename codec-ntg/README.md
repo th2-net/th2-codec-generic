@@ -1,6 +1,10 @@
-# NTG codec (3.10.5)
+# NTG codec (3.11.0)
 
 This codec can be used for decoding and encoding messages via NTG (Native) protocol.
+
+### Codec protocol
+
+Codec handles messages with the `NTG` or empty protocol during encode/decode
 
 ## Configuration
 

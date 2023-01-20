@@ -1,6 +1,10 @@
-# FIX codec (3.10.5)
+# FIX codec (3.11.0)
 
 This codec can be used for decoding and encoding messages via FIX protocol
+
+### Codec protocol
+
+Codec handles messages with the `FIX` or empty protocol during encode/decode
 
 ## Configuration
 
@@ -61,10 +65,6 @@ Determines if nanoseconds should be added to date-time / time fields during enco
 
 ## Release notes
 
-+ 3.10.5
-+ Update sailfish version to 3.2.1860
-    + Detection of errors in FIXSession and FIXCodec during parsing qfj messages
-    
 + 3.10.4
   + Codec cannot decode message if it contains a tag that is similar to BeginString (`8=FIX`)
 
