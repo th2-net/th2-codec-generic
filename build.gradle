@@ -11,20 +11,9 @@ subprojects {
         sharedDir = file("${project.rootDir}/shared")
 
         baseSailfishVersion           = '3.3'
-        sailfishVersion               = "3.3.51"
+        sailfishVersion               = "3.3.54"
 
         dockerCodecImplementationDir = 'codec_implementation'
-    }
-
-    ext.excludeSailfish = { rcd ->
-        rcd.excludeModule("com.exactpro.sf", "sailfish-core")
-        rcd.excludeModule("com.exactpro.sf", "sailfish-common")
-        rcd.excludeModule("com.exactpro.sf", "service-tcpip")
-        rcd.excludeModule("com.exactpro.sf", "service-fast")
-        rcd.excludeModule("com.exactpro.sf", "service-fix")
-        rcd.excludeModule("com.exactpro.sf", "service-itch")
-        rcd.excludeModule("com.exactpro.sf", "service-ntg")
-        rcd.excludeModule("com.exactpro.sf", "service-soup")
     }
 
     repositories {
@@ -32,45 +21,15 @@ subprojects {
             name 'MavenLocal'
             url sharedDir
         }
-
-        maven {
-            name 'Sonatype_snapshots'
-            url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
-            content {
-                excludeSailfish(it)
-            }
-        }
-        // ignoreGradleMetadataRedirection is used for sonatype because
-        // Sailfish dependencies have constrains that interfere with our BOM
-        // so we exclude Gradle metadata for this repositories.
-        // We've checked these versions - they are compatible and safe to use
-        maven {
-            name 'Sonatype_snapshots'
-            url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
-            metadataSources {
-                mavenPom()
-                artifact()
-                ignoreGradleMetadataRedirection()
-            }
-        }
-        maven {
-            name 'Sonatype_releases'
-            url 'https://s01.oss.sonatype.org/content/repositories/releases/'
-            content {
-                excludeSailfish(it)
-            }
-        }
-        maven {
-            name 'Sonatype_releases'
-            url 'https://s01.oss.sonatype.org/content/repositories/releases/'
-            metadataSources {
-                mavenPom()
-                artifact()
-                ignoreGradleMetadataRedirection()
-            }
-        }
         mavenCentral()
-        mavenLocal()
+        maven {
+            name 'Sonatype_snapshots'
+            url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+        }
+        maven {
+            name 'Sonatype_releases'
+            url 'https://s01.oss.sonatype.org/content/repositories/releases/'
+        }
 
         configurations.all {
             resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
@@ -87,7 +46,6 @@ subprojects {
             exclude module: 'sailfish-core'
             exclude module: 'sailfish-common'
         }
-        codec ('com.fasterxml.jackson.core:jackson-databind:2.14.1')
     }
 
     docker {
