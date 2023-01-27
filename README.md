@@ -1,4 +1,4 @@
-# General codecs (3.10.5)
+# General codecs (3.11.0)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,11 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 # Changes
+
+### 3.11.0
+
++ Update sailfish version to `3.3.54`
++ Update base image from to 3.14.0
 
 ### 3.10.5
 

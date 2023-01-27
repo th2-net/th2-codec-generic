@@ -1,4 +1,4 @@
-# FIX codec (3.10.5)
+# FIX codec (3.11.0)
 
 This codec can be used for decoding and encoding messages via FIX protocol
 
@@ -60,6 +60,11 @@ Determines if microseconds should be added to date-time / time fields during enc
 Determines if nanoseconds should be added to date-time / time fields during encoding
 
 ## Release notes
+
++ 3.11.0
+  + Update sailfish version to `3.3.54`
+  + Update base image from to 3.14.0
+
 
 + 3.10.5
 + Update sailfish version to 3.2.1860
