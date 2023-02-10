@@ -1,4 +1,4 @@
-# FIX codec (3.8.1)
+# FIX codec (3.11.0)
 
 This codec can be used for decoding and encoding messages via FIX protocol
 
@@ -60,6 +60,18 @@ Determines if microseconds should be added to date-time / time fields during enc
 Determines if nanoseconds should be added to date-time / time fields during encoding
 
 ## Release notes
+
++ 3.11.0
+  + Update sailfish version to `3.3.54`
+  + Update base image from to 3.14.0
+
+
++ 3.10.5
++ Update sailfish version to 3.2.1860
+    + Detection of errors in FIXSession and FIXCodec during parsing qfj messages
+    
++ 3.10.4
+  + Codec cannot decode message if it contains a tag that is similar to BeginString (`8=FIX`)
 
 + 3.10.0
   + Fixed the truncated time field problem related to incorrect work of the `includeMilliseconds` option
