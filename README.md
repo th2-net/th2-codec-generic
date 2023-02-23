@@ -1,4 +1,4 @@
-# General codecs (3.11.1)
+# General codecs (3.11.2)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,10 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 # Changes
+
+### 3.11.2
+
++ Converted codec_config.yml content to json format because the base project doesn't support yml since 3.14.3 version 
 
 ### 3.11.1
 
