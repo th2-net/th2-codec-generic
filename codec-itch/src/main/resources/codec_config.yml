@@ -1,3 +1,4 @@
----
-evolutionaryOutput: true
-wrapMessages: false
+{
+  "evolutionaryOutput": "true",
+  "wrapMessages": "false"
+}
