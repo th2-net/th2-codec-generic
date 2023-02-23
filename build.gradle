@@ -46,6 +46,7 @@ subprojects {
         codec ("com.exactpro.sf:${sf_service_name}:${sailfishVersion}") {
             exclude module: 'sailfish-core'
             exclude module: 'sailfish-common'
+            exclude group: 'org.jetbrains.kotlin'
         }
     }
 
