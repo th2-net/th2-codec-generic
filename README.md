@@ -1,4 +1,4 @@
-# General codecs (3.11.0)
+# General codecs (3.11.1)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,11 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 # Changes
+
+### 3.11.1
+
++ Update base image from 3.14.0 to 3.14.3
++ Excluded kotlin dependencies
 
 ### 3.11.0
 

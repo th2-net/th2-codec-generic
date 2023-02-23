@@ -1,5 +1,6 @@
 plugins {
     id 'com.palantir.docker' version '0.25.0' apply false
+    id "org.owasp.dependencycheck" version "8.1.0"
 }
 
 subprojects {
@@ -45,6 +46,11 @@ subprojects {
         codec ("com.exactpro.sf:${sf_service_name}:${sailfishVersion}") {
             exclude module: 'sailfish-core'
             exclude module: 'sailfish-common'
+            // FIXME: try to exclude codec-sailfish depenendencies
+            exclude module: 'kotlin-stdlib-jdk8'
+            exclude module: 'kotlin-reflect'
+            exclude module: 'kotlin-stdlib'
+            exclude module: 'kotlin-stdlib-common'
         }
     }
 
@@ -57,5 +63,16 @@ subprojects {
                 into '.'
             }
         }
+    }
+}
+
+dependencyCheck {
+    formats=['SARIF', 'JSON', 'HTML']
+    failBuildOnCVSS=5
+
+    analyzers {
+        assemblyEnabled = false
+        nugetconfEnabled = false
+        nodeEnabled = false
     }
 }
