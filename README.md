@@ -16,7 +16,7 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 
 ### 3.11.1
 
-+ Update base image from 3.14.0 to 3.14.2
++ Update base image from 3.14.0 to 3.14.3
 + Excluded kotlin dependencies
 
 ### 3.11.0
