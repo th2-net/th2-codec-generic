@@ -1,4 +1,4 @@
-# General codecs (4.0.1)
+# General codecs (4.0.2)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -14,6 +14,9 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 
 # Changes
 
+### 4.0.2
++ Migration to `th2-codec-sailfish` version `4.0.2-dev`
+
 ### 4.0.1
 
 + Migration to `th2-codec-sailfish` version `4.0.1-dev`
@@ -22,6 +25,19 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 ### 4.0.0
 
 + `th2-codec-sailfish` version with books/pages
+
+### 3.11.3
+
++ Migrated to codec-sailfish:3.14.4
+
+### 3.11.2
+
++ Converted codec_config.yml content to json format because the base project doesn't support yml since 3.14.3 version 
+
+### 3.11.1
+
++ Update base image from 3.14.0 to 3.14.3
++ Excluded kotlin dependencies
 
 ### 3.11.0
 
