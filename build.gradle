@@ -1,19 +1,28 @@
 plugins {
     id 'com.palantir.docker' version '0.25.0' apply false
+    id 'application'
 }
 
 subprojects {
     apply plugin: 'java'
     apply plugin: 'com.palantir.docker'
+    apply plugin: 'application'
 
     ext {
         resourceDir = "src/main/resources"
         sharedDir = file("${project.rootDir}/shared")
 
         baseSailfishVersion           = '3.3'
-        sailfishVersion               = "3.3.54"
+        sailfishVersion               = "3.3.106"
 
         dockerCodecImplementationDir = 'codec_implementation'
+    }
+
+    ext.excludeSailfish = { rcd ->
+        rcd.excludeModule("com.exactpro.sf", "sailfish-core")
+        rcd.excludeModule("com.exactpro.sf", "sailfish-common")
+        rcd.excludeModule("com.exactpro.sf", "sailfish-rest-api-client")
+        rcd.excludeModule("com.exactpro.sf", "service-http")
     }
 
     repositories {
@@ -21,15 +30,43 @@ subprojects {
             name 'MavenLocal'
             url sharedDir
         }
-        mavenCentral()
+
         maven {
             name 'Sonatype_snapshots'
             url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+            content {
+                excludeSailfish(it)
+            }
+        }
+        maven {
+            name 'Sonatype_snapshots'
+            url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+            metadataSources {
+                mavenPom()
+                artifact()
+                ignoreGradleMetadataRedirection()
+            }
         }
         maven {
             name 'Sonatype_releases'
             url 'https://s01.oss.sonatype.org/content/repositories/releases/'
+            metadataSources {
+                mavenPom()
+                artifact()
+                ignoreGradleMetadataRedirection()
+            }
         }
+
+        maven {
+            name 'Sonatype_releases'
+            url 'https://s01.oss.sonatype.org/content/repositories/releases/'
+            content {
+                excludeSailfish(it)
+            }
+        }
+
+        mavenCentral()
+        mavenLocal()
 
         configurations.all {
             resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
@@ -42,20 +79,47 @@ subprojects {
     }
 
     dependencies {
-        codec ("com.exactpro.sf:${sf_service_name}:${sailfishVersion}") {
+        implementation("com.exactpro.sf:${sf_service_name}:${sailfishVersion}") {
             exclude module: 'sailfish-core'
             exclude module: 'sailfish-common'
         }
+        implementation 'com.exactpro.th2:codec-sailfish:4.1.0-TH2-4891-builders-service-loader+'
+    }
+
+    jar {
+        manifest {
+            attributes(
+                    'Created-By': "${System.getProperty('java.version')} (${System.getProperty('java.vendor')})",
+                    'Specification-Title': '',
+                    'Specification-Vendor': 'Exactpro Systems LLC',
+                    'Implementation-Title': project.archivesBaseName,
+                    'Implementation-Vendor': 'Exactpro Systems LLC',
+                    'Implementation-Vendor-Id': 'com.exactpro',
+                    'Implementation-Version': project.version
+            )
+        }
+    }
+
+    applicationName = 'service'
+
+    distTar {
+        archiveName "${applicationName}.tar"
+    }
+
+    dockerPrepare {
+        dependsOn distTar
     }
 
     docker {
-        copySpec.with {
-            from(configurations.codec) {
-                into dockerCodecImplementationDir
-            }
+        copySpec {
+            from(tarTree("$buildDir/distributions/${applicationName}.tar"))
             from(resourceDir) {
                 into '.'
             }
         }
+    }
+
+    application {
+        mainClassName = "com.exactpro.th2.codec.MainKt"
     }
 }
