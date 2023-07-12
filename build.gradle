@@ -1,6 +1,7 @@
 plugins {
     id 'com.palantir.docker' version '0.25.0' apply false
     id 'application'
+    id "org.owasp.dependencycheck" version "8.1.2"
 }
 
 subprojects {
@@ -121,5 +122,16 @@ subprojects {
 
     application {
         mainClassName = "com.exactpro.th2.codec.MainKt"
+    }
+}
+
+dependencyCheck {
+    formats = ['SARIF', 'JSON', 'HTML']
+    failBuildOnCVSS = 5
+
+    analyzers {
+        assemblyEnabled = false
+        nugetconfEnabled = false
+        nodeEnabled = false
     }
 }
