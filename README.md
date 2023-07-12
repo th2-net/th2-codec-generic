@@ -16,7 +16,8 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 
 ### 4.1.0
 + Migration to `th2-codec-sailfish` version `4.1.0-dev`
-+ Transport protocol support
++ Transport protocol support.
++ Moved to using core lib instead of docker image layering.
 
 ### 4.0.1
 
