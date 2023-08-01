@@ -11,7 +11,6 @@ subprojects {
 
     ext {
         resourceDir = "src/main/resources"
-        sharedDir = file("${project.rootDir}/shared")
 
         baseSailfishVersion           = '3.3'
         sailfishVersion               = "3.3.111"
@@ -27,11 +26,6 @@ subprojects {
     }
 
     repositories {
-        maven {
-            name 'MavenLocal'
-            url sharedDir
-        }
-
         maven {
             name 'Sonatype_snapshots'
             url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
@@ -69,7 +63,7 @@ subprojects {
         mavenCentral()
         mavenLocal()
 
-        configurations.all {
+        configurations.configureEach {
             resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
             resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
         }
