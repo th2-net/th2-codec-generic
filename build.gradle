@@ -4,7 +4,7 @@ import com.github.jk1.license.render.JsonReportRenderer
 plugins {
     id 'com.palantir.docker' version '0.25.0' apply false
     id 'application'
-    id "org.owasp.dependencycheck" version "8.1.2"
+    id "org.owasp.dependencycheck" version "8.3.1"
     id 'com.github.jk1.dependency-license-report' version '2.5'
     id "de.undercouch.download" version "5.4.0"
 }
@@ -88,7 +88,7 @@ subprojects {
             exclude module: 'kotlin-stdlib'
             exclude module: 'kotlin-stdlib-common'
         }
-        implementation 'com.exactpro.th2:codec-sailfish:4.1.0-TH2-4891-builders-service-loader+'
+        implementation 'com.exactpro.th2:codec-sailfish:4.1.0-dev'
     }
 
     jar {
