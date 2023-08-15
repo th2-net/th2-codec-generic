@@ -1,4 +1,4 @@
-# General codecs (4.0.2)
+# General codecs (4.1.0)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,12 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 # Changes
+
+### 4.1.0
++ Migration to `th2-codec-sailfish` version `4.1.0-dev`
++ Transport protocol support.
++ Moved to using core lib instead of docker image layering.
++ bumped sailfish version to `3.3.111`
 
 ### 4.0.2
 + Migration to `th2-codec-sailfish` version `4.0.2-dev`

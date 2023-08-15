@@ -6,13 +6,13 @@ on:
       - master
       - version-*
       - dependabot**
-      - dev-version-*
     paths-ignore:
       - README.md
 
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         proto:
           - codec-fast

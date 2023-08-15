@@ -1,38 +1,74 @@
+import com.github.jk1.license.filter.LicenseBundleNormalizer
+import com.github.jk1.license.render.JsonReportRenderer
+
 plugins {
     id 'com.palantir.docker' version '0.25.0' apply false
-    id "org.owasp.dependencycheck" version "8.1.2"
+    id 'application'
+    id "org.owasp.dependencycheck" version "8.3.1"
+    id 'com.github.jk1.dependency-license-report' version '2.5'
+    id "de.undercouch.download" version "5.4.0"
 }
 
 subprojects {
     apply plugin: 'java'
     apply plugin: 'com.palantir.docker'
+    apply plugin: 'application'
 
     ext {
         resourceDir = "src/main/resources"
-        sharedDir = file("${project.rootDir}/shared")
 
         baseSailfishVersion           = '3.3'
-        sailfishVersion               = "3.3.54"
+        sailfishVersion               = "3.3.111"
 
         dockerCodecImplementationDir = 'codec_implementation'
     }
 
+    ext.excludeSailfish = { rcd ->
+        rcd.excludeModule("com.exactpro.sf", "sailfish-core")
+        rcd.excludeModule("com.exactpro.sf", "sailfish-common")
+        rcd.excludeModule("com.exactpro.sf", "sailfish-rest-api-client")
+        rcd.excludeModule("com.exactpro.sf", "service-http")
+    }
+
     repositories {
-        maven {
-            name 'MavenLocal'
-            url sharedDir
-        }
-        mavenCentral()
         maven {
             name 'Sonatype_snapshots'
             url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+            content {
+                excludeSailfish(it)
+            }
+        }
+        maven {
+            name 'Sonatype_snapshots'
+            url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+            metadataSources {
+                mavenPom()
+                artifact()
+                ignoreGradleMetadataRedirection()
+            }
         }
         maven {
             name 'Sonatype_releases'
             url 'https://s01.oss.sonatype.org/content/repositories/releases/'
+            metadataSources {
+                mavenPom()
+                artifact()
+                ignoreGradleMetadataRedirection()
+            }
         }
 
-        configurations.all {
+        maven {
+            name 'Sonatype_releases'
+            url 'https://s01.oss.sonatype.org/content/repositories/releases/'
+            content {
+                excludeSailfish(it)
+            }
+        }
+
+        mavenCentral()
+        mavenLocal()
+
+        configurations.configureEach {
             resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
             resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
         }
@@ -43,7 +79,7 @@ subprojects {
     }
 
     dependencies {
-        codec ("com.exactpro.sf:${sf_service_name}:${sailfishVersion}") {
+        implementation("com.exactpro.sf:${sf_service_name}:${sailfishVersion}") {
             exclude module: 'sailfish-core'
             exclude module: 'sailfish-common'
             // FIXME: try to exclude codec-sailfish depenendencies
@@ -52,27 +88,73 @@ subprojects {
             exclude module: 'kotlin-stdlib'
             exclude module: 'kotlin-stdlib-common'
         }
+        implementation 'com.exactpro.th2:codec-sailfish:4.1.0-dev'
+    }
+
+    jar {
+        manifest {
+            attributes(
+                    'Created-By': "${System.getProperty('java.version')} (${System.getProperty('java.vendor')})",
+                    'Specification-Title': '',
+                    'Specification-Vendor': 'Exactpro Systems LLC',
+                    'Implementation-Title': project.archivesBaseName,
+                    'Implementation-Vendor': 'Exactpro Systems LLC',
+                    'Implementation-Vendor-Id': 'com.exactpro',
+                    'Implementation-Version': project.version
+            )
+        }
+    }
+
+    applicationName = 'service'
+
+    distTar {
+        archiveName "${applicationName}.tar"
+        into('service/bin') {
+            from resourceDir
+        }
+    }
+
+    dockerPrepare {
+        dependsOn distTar
     }
 
     docker {
-        copySpec.with {
-            from(configurations.codec) {
-                into dockerCodecImplementationDir
-            }
-            from(resourceDir) {
-                into '.'
-            }
-        }
+        copySpec.from(tarTree("$buildDir/distributions/${applicationName}.tar"))
+    }
+
+    application {
+        mainClassName = "com.exactpro.th2.codec.MainKt"
     }
 }
 
 dependencyCheck {
-    formats=['SARIF', 'JSON', 'HTML']
-    failBuildOnCVSS=5
+    formats = ['SARIF', 'JSON', 'HTML']
+    failBuildOnCVSS = 5
 
     analyzers {
         assemblyEnabled = false
         nugetconfEnabled = false
         nodeEnabled = false
     }
+}
+
+licenseReport {
+    def licenseNormalizerBundlePath = "$buildDir/license-normalizer-bundle.json"
+
+    if (!file(licenseNormalizerBundlePath).exists()) {
+        download.run {
+            src 'https://raw.githubusercontent.com/th2-net/.github/main/license-compliance/gradle-license-report/license-normalizer-bundle.json'
+            dest "$buildDir/license-normalizer-bundle.json"
+            overwrite false
+        }
+    }
+
+    filters = [
+            new LicenseBundleNormalizer(licenseNormalizerBundlePath, false)
+    ]
+    renderers = [
+            new JsonReportRenderer('licenses.json', false),
+    ]
+    excludeOwnGroup = false
+    allowedLicensesFile = new URL("https://raw.githubusercontent.com/th2-net/.github/main/license-compliance/gradle-license-report/allowed-licenses.json")
 }
