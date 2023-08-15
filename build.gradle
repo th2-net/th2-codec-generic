@@ -79,6 +79,7 @@ subprojects {
     }
 
     dependencies {
+        implementation (platform("com.exactpro.th2:bom:4.5.0"))
         implementation("com.exactpro.sf:${sf_service_name}:${sailfishVersion}") {
             exclude module: 'sailfish-core'
             exclude module: 'sailfish-common'
@@ -88,7 +89,7 @@ subprojects {
             exclude module: 'kotlin-stdlib'
             exclude module: 'kotlin-stdlib-common'
         }
-        implementation('com.exactpro.th2:codec-sailfish:4.2.0-TH2-5035-+') {
+        implementation('com.exactpro.th2:codec-sailfish:4.2.0-dev') {
             exclude group: 'com.exactpro.th2', module: 'task-utils'
         }
     }

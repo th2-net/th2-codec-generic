@@ -15,6 +15,7 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 # Changes
 
 ### 4.2.0
++ Added bom: `4.5.0`
 + Updated codec-sailfish: `4.2.0`
 
 ### 4.1.0
