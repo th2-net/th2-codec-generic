@@ -89,9 +89,7 @@ subprojects {
             exclude module: 'kotlin-stdlib'
             exclude module: 'kotlin-stdlib-common'
         }
-        implementation('com.exactpro.th2:codec-sailfish:4.2.0-dev') {
-            exclude group: 'com.exactpro.th2', module: 'task-utils'
-        }
+        implementation 'com.exactpro.th2:codec-sailfish:4.2.0-dev'
     }
 
     jar {
@@ -133,7 +131,7 @@ subprojects {
 dependencyCheck {
     formats = ['SARIF', 'JSON', 'HTML']
     failBuildOnCVSS = 5
-
+    suppressionFile = file('suppressions.xml')
     analyzers {
         assemblyEnabled = false
         nugetconfEnabled = false
