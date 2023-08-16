@@ -79,16 +79,17 @@ subprojects {
     }
 
     dependencies {
+        implementation (platform("com.exactpro.th2:bom:4.5.0"))
         implementation("com.exactpro.sf:${sf_service_name}:${sailfishVersion}") {
             exclude module: 'sailfish-core'
             exclude module: 'sailfish-common'
-            // FIXME: try to exclude codec-sailfish depenendencies
+            // FIXME: try to exclude codec-sailfish dependencies
             exclude module: 'kotlin-stdlib-jdk8'
             exclude module: 'kotlin-reflect'
             exclude module: 'kotlin-stdlib'
             exclude module: 'kotlin-stdlib-common'
         }
-        implementation 'com.exactpro.th2:codec-sailfish:4.1.0-dev'
+        implementation 'com.exactpro.th2:codec-sailfish:4.2.1-dev'
     }
 
     jar {
@@ -130,7 +131,7 @@ subprojects {
 dependencyCheck {
     formats = ['SARIF', 'JSON', 'HTML']
     failBuildOnCVSS = 5
-
+    suppressionFile = file('suppressions.xml')
     analyzers {
         assemblyEnabled = false
         nugetconfEnabled = false
