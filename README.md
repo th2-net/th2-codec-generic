@@ -1,4 +1,4 @@
-# General codecs (4.2.2)
+# General codecs (4.2.3)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,11 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 # Changes
+
+### 4.2.3
+
++ Update codec-sailfish: `4.2.2`
+  + Fix for error in case the sailfish lib has more than one codec implementation
 
 ### 4.2.2
 + Updated codec-sailfish: `4.2.1`
