@@ -18,7 +18,7 @@ subprojects {
         resourceDir = "src/main/resources"
 
         baseSailfishVersion           = '3.3'
-        sailfishVersion               = "3.3.111"
+        sailfishVersion               = "3.3.144"
 
         dockerCodecImplementationDir = 'codec_implementation'
     }
@@ -89,7 +89,7 @@ subprojects {
             exclude module: 'kotlin-stdlib'
             exclude module: 'kotlin-stdlib-common'
         }
-        implementation 'com.exactpro.th2:codec-sailfish:4.2.2-dev'
+        implementation 'com.exactpro.th2:codec-sailfish:4.2.3-th2-5105-6559942552-398ca0f-SNAPSHOT'
     }
 
     jar {
