@@ -1,4 +1,4 @@
-# General codecs (4.2.4)
+# General codecs (5.0.0)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,12 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 # Changes
+
+### 5.0.0
+
++ Update codec-sailfish: `5.0.0`
+  + Migrate to th2-codec base
++ Updated sailfish: `3.3.169`
 
 ### 4.2.4
 
