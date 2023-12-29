@@ -18,6 +18,7 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 
 + Update codec-sailfish: `5.0.0`
   + Migrate to th2-codec base
++ Updated sailfish: `3.3.169`
 
 ### 4.2.4
 
