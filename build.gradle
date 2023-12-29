@@ -89,7 +89,7 @@ subprojects {
             exclude module: 'kotlin-stdlib'
             exclude module: 'kotlin-stdlib-common'
         }
-        implementation 'com.exactpro.th2:codec-sailfish:5.0.0-TH2-5143-+'
+        implementation 'com.exactpro.th2:codec-sailfish:5.0.0-dev'
     }
 
     jar {
