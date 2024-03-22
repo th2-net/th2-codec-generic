@@ -52,6 +52,9 @@ parseMessageLengthAsSeparateMessage: true
 
 # Changes
 
+### 3.11.4
+  + Add parameter `trimLeftPaddingEnabled` to codec to configure how it trims whitespaces. Enabled by default.
+
 ### 3.11.0
   + Update sailfish version to `3.3.54`
   + Update base image from to 3.14.0
