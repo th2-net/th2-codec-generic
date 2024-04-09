@@ -12,7 +12,7 @@ subprojects {
         sharedDir = file("${project.rootDir}/shared")
 
         baseSailfishVersion           = '3.3'
-        sailfishVersion               = "3.3-SNAPSHOT"
+        sailfishVersion               = "3.3.202"
 
         dockerCodecImplementationDir = 'codec_implementation'
     }
