@@ -1,4 +1,4 @@
-# General codecs (5.0.0)
+# General codecs (5.1.0)
 
 This repository contains the build scripts for general codecs:
 + [fix](codec-fix/README.md)
@@ -13,6 +13,14 @@ If you need to modify some parameters, please, change only the parameters that y
 _Do not specify default parameters if you don't want to override them_ (just because it doesn't make any sense to duplicate the configuration).
 
 # Changes
+
+### 5.1.0
+
++ Migrated to th2 gradle plugin: `0.0.6`
++ Updated:
+  + bom: `4.6.1`
+  + codec-sailfish: `5.1.0-dev`
+  + sailfish: `3.3.202`
 
 ### 5.0.0
 
