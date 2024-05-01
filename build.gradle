@@ -82,7 +82,7 @@ subprojects {
             exclude module: 'kotlin-stdlib'
             exclude module: 'kotlin-stdlib-common'
         }
-        implementation 'com.exactpro.th2:codec-sailfish:5.1.0-th2-gradle-plugin-+'
+        implementation 'com.exactpro.th2:codec-sailfish:5.1.0-dev'
     }
 
     application {
