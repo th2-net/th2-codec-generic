@@ -1,24 +1,18 @@
-import com.github.jk1.license.filter.LicenseBundleNormalizer
-import com.github.jk1.license.render.JsonReportRenderer
-
 plugins {
-    id 'com.palantir.docker' version '0.25.0' apply false
-    id 'application'
-    id "org.owasp.dependencycheck" version "8.3.1"
-    id 'com.github.jk1.dependency-license-report' version '2.5'
-    id "de.undercouch.download" version "5.4.0"
+    id "com.exactpro.th2.gradle.base" version "0.0.6"
+    id "com.exactpro.th2.gradle.component" version "0.0.6" apply false
 }
 
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'com.palantir.docker'
+    apply plugin: 'com.exactpro.th2.gradle.component'
     apply plugin: 'application'
 
     ext {
         resourceDir = "src/main/resources"
 
         baseSailfishVersion           = '3.3'
-        sailfishVersion               = "3.3.169"
+        sailfishVersion               = "3.3.202"
 
         dockerCodecImplementationDir = 'codec_implementation'
     }
@@ -79,7 +73,6 @@ subprojects {
     }
 
     dependencies {
-        implementation (platform("com.exactpro.th2:bom:4.5.0"))
         implementation("com.exactpro.sf:${sf_service_name}:${sailfishVersion}") {
             exclude module: 'sailfish-core'
             exclude module: 'sailfish-common'
@@ -89,65 +82,14 @@ subprojects {
             exclude module: 'kotlin-stdlib'
             exclude module: 'kotlin-stdlib-common'
         }
-        implementation 'com.exactpro.th2:codec-sailfish:5.0.0-dev'
-    }
-
-    jar {
-        manifest {
-            attributes(
-                    'Created-By': "${System.getProperty('java.version')} (${System.getProperty('java.vendor')})",
-                    'Specification-Title': '',
-                    'Specification-Vendor': 'Exactpro Systems LLC',
-                    'Implementation-Title': project.name,
-                    'Implementation-Vendor': 'Exactpro Systems LLC',
-                    'Implementation-Vendor-Id': 'com.exactpro',
-                    'Implementation-Version': project.version
-            )
-        }
-    }
-
-    dockerPrepare {
-        dependsOn installDist
-    }
-
-    docker {
-        copySpec.from("$buildDir/install")
+        implementation 'com.exactpro.th2:codec-sailfish:5.1.0-dev'
     }
 
     application {
-        applicationName("service")
         mainClass.set("com.exactpro.th2.codec.MainKt")
     }
 }
 
 dependencyCheck {
-    formats = ['SARIF', 'JSON', 'HTML']
-    failBuildOnCVSS = 5
     suppressionFile = file('suppressions.xml')
-    analyzers {
-        assemblyEnabled = false
-        nugetconfEnabled = false
-        nodeEnabled = false
-    }
-}
-
-licenseReport {
-    def licenseNormalizerBundlePath = "$buildDir/license-normalizer-bundle.json"
-
-    if (!file(licenseNormalizerBundlePath).exists()) {
-        download.run {
-            src 'https://raw.githubusercontent.com/th2-net/.github/main/license-compliance/gradle-license-report/license-normalizer-bundle.json'
-            dest "$buildDir/license-normalizer-bundle.json"
-            overwrite false
-        }
-    }
-
-    filters = [
-            new LicenseBundleNormalizer(licenseNormalizerBundlePath, false)
-    ]
-    renderers = [
-            new JsonReportRenderer('licenses.json', false),
-    ]
-    excludeOwnGroup = false
-    allowedLicensesFile = new URL("https://raw.githubusercontent.com/th2-net/.github/main/license-compliance/gradle-license-report/allowed-licenses.json")
 }
