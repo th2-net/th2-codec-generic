@@ -11,8 +11,7 @@ subprojects {
     ext {
         resourceDir = "src/main/resources"
 
-        baseSailfishVersion           = '3.3'
-        sailfishVersion               = "3.3.202"
+        sailfishVersion               = "3.3-SNAPSHOT"
 
         dockerCodecImplementationDir = 'codec_implementation'
     }

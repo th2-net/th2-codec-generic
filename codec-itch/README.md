@@ -27,3 +27,8 @@ The supported values are 1 and 2.
 
 If set to value of `true` all of the decoded messages will be wrapped to the special message.
 Otherwise, the decoded messages will be returned without wrapping them.
+
+## Release notes
+
++ 5.1.1
+  + Fixed the decoding negative value of Price type to BigDecimal
