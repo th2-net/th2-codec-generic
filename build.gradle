@@ -8,12 +8,12 @@ subprojects {
     apply plugin: 'com.exactpro.th2.gradle.component'
     apply plugin: 'application'
 
+    version = release_version
+
     ext {
         resourceDir = "src/main/resources"
 
-        sailfishVersion               = "3.3.255"
-
-        dockerCodecImplementationDir = 'codec_implementation'
+        sailfishVersion               = "3.3.225"
     }
 
     ext.excludeSailfish = { rcd ->
