@@ -14,6 +14,12 @@ _Do not specify default parameters if you don't want to override them_ (just bec
 
 # Changes
 
+### 5.1.1
+
++ Updated:
+  + sailfish: `3.3.225`
+  + th2 gradle plugin: `0.0.8`
+
 ### 5.1.0
 
 + Migrated to th2 gradle plugin: `0.0.6`

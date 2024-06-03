@@ -1,6 +1,6 @@
 plugins {
-    id "com.exactpro.th2.gradle.base" version "0.0.6"
-    id "com.exactpro.th2.gradle.component" version "0.0.6" apply false
+    id "com.exactpro.th2.gradle.base" version "0.0.8"
+    id "com.exactpro.th2.gradle.component" version "0.0.8" apply false
 }
 
 subprojects {
@@ -8,20 +8,24 @@ subprojects {
     apply plugin: 'com.exactpro.th2.gradle.component'
     apply plugin: 'application'
 
+    version = release_version
+
     ext {
         resourceDir = "src/main/resources"
 
-        baseSailfishVersion           = '3.3'
-        sailfishVersion               = "3.3.202"
-
-        dockerCodecImplementationDir = 'codec_implementation'
+        sailfishVersion               = "3.3.225"
     }
 
     ext.excludeSailfish = { rcd ->
         rcd.excludeModule("com.exactpro.sf", "sailfish-core")
         rcd.excludeModule("com.exactpro.sf", "sailfish-common")
         rcd.excludeModule("com.exactpro.sf", "sailfish-rest-api-client")
-        rcd.excludeModule("com.exactpro.sf", "service-http")
+        rcd.excludeModule("com.exactpro.sf", "service-fast")
+        rcd.excludeModule("com.exactpro.sf", "service-tcpip")
+        rcd.excludeModule("com.exactpro.sf", "service-fix")
+        rcd.excludeModule("com.exactpro.sf", "service-itch")
+        rcd.excludeModule("com.exactpro.sf", "service-ntg")
+        rcd.excludeModule("com.exactpro.sf", "service-soup")
     }
 
     repositories {
